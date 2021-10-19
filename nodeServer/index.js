@@ -1,5 +1,7 @@
 // Node server which will handle socket io connections
 const io = require('socket.io')(8000)
+const port = process.env.PORT || 8000;
+
 
 const users = {};
 
@@ -16,10 +18,10 @@ io.on('connection', socket =>{
     });
 
     // If someone leaves the chat, let others know 
-    /*socket.on('disconnect', message =>{
+    socket.on('disconnect', message =>{
         socket.broadcast.emit('left', users[socket.id]);
         delete users[socket.id];
     });
-*/
+
 
 })
